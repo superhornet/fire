@@ -1,0 +1,27 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "src/main/ts",
+        "outDir": "./dist/js",
+        "module": "nodenext",
+        "target": "esnext",
+        "lib": [
+            "esnext",
+        ],
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+    },
+    "include": [
+        "src/main/ts/**/*.ts"
+    ],
+    "exclude": [
+        "spec/**/*.spec.ts",
+        "spec/**/*.Spec.ts",
+        "spec/**/*.test.ts",
+        "spec/**/*.Test.ts",
+        "src/test/ts/*.Test.ts",
+        "node_modules",
+        "trash"
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "src/browser/ts",
+        "outDir": "./dist/public/js",
+        "module": "esnext",
+        "target": "esnext",
+        "lib": [
+            "dom",
+        ],
+        "moduleResolution": "bundler",
+        "sourceMap": false,
+        "declaration": false,
+        "declarationMap": false,
+    },
+    "include": [
+        "src/browser/**/*.ts"
+    ]
+}

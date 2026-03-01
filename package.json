@@ -1,0 +1,66 @@
+{
+    "name": "fire",
+    "version": "1.0.0",
+    "description": "Software fire render in TypeScript",
+    "main": "dist/js/index.js",
+    "scripts": {
+        "build:sass": "sass src/scss/:dist/public/css/ --no-source-map",
+        "build:FE": "node buildFrontend.js",
+        "build:server": "node buildServer.js",
+        "clean": "rimraf dist/ docs/",
+        "copy-folder": "node -e \"require('fs').cpSync('src/main/views', 'dist/js/views', { recursive: true })\"",
+        "copy-html": "node -e \"require('fs').cpSync('src/browser/index.html', 'dist/public/index.html')\"",
+        "dev:start": "npm-run-all clean lint tsc:server tsc:client copy-folder build:sass start",
+        "dev": "nodemon --watch src -e ts,scss,pug --exec npm run dev:start",
+        "lint": "eslint . --ext .ts,.tsx",
+        "package": "npm-run-all clean copy-html build:FE build:sass",
+        "start": "node .",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "tsc:server": "node ./node_modules/typescript/bin/tsc -p tsconfig.server.json",
+        "tsc:client": "node ./node_modules/typescript/bin/tsc -p tsconfig.frontend.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/superhornet/fire.git"
+    },
+    "keywords": [
+        "typescript",
+        "fire",
+        "animation"
+    ],
+    "author": "Caleb King",
+    "license": "ISC",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/superhornet/fire/issues"
+    },
+    "homepage": "https://github.com/superhornet/fire#readme",
+    "overrides": {
+        "eslint": "latest"
+    },
+    "devDependencies": {
+        "@eslint/js": "latest",
+        "@types/express": "^5.0.6",
+        "@types/node": "^25.3.2",
+        "@typescript-eslint/eslint-plugin": "^8.56.1",
+        "@typescript-eslint/parser": "^8.56.1",
+        "eslint": "latest",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-prettier": "^5.5.5",
+        "globals": "^17.3.0",
+        "nodemon": "^3.1.14",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^3.8.1",
+        "rimraf": "^6.1.3",
+        "sass": "^1.97.3",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.56.1"
+    },
+    "dependencies": {
+        "dotenv": "^17.3.1",
+        "esbuild": "^0.27.3",
+        "express": "^5.2.1",
+        "pug": "^3.0.3"
+    }
+}
